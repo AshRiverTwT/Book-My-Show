@@ -23,5 +23,5 @@ EXPOSE 3000
 ENV NODE_OPTIONS=--openssl-legacy-provider
 ENV PORT=3000
 
-# Start the application
+# Start the application 
 CMD ["npm", "start"]
