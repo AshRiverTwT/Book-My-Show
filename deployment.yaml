@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: bms-ns
+  name: bms-deployment
+  labels:
+    app: bookmyshow
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: bookmyshow
+  template:
+    metadata:
+      labels:
+        app: bookmyshow
+    spec:
+      containers:
+      - name: bms-container
+        image: kalyantwt/book-my-show:latest 
+        ports:
+        - containerPort: 3000 
