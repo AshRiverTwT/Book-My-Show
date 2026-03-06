@@ -1,0 +1,1306 @@
+Started by user ash
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/BookMyShow
+[Pipeline] {
+[Pipeline] tool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Clean Workspace)
+[Pipeline] cleanWs
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] done
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Checkout Code from GitHub)
+[Pipeline] git
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/AshRiverTwT/Book-My-Show.git
+ > git init /var/lib/jenkins/workspace/BookMyShow # timeout=10
+Fetching upstream changes from https://github.com/AshRiverTwT/Book-My-Show.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+ > git fetch --tags --force --progress -- https://github.com/AshRiverTwT/Book-My-Show.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/AshRiverTwT/Book-My-Show.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/feature-change^{commit} # timeout=10
+Checking out Revision 699f34c472f8cdb12eb730ff57ba686a597cd747 (refs/remotes/origin/feature-change)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 699f34c472f8cdb12eb730ff57ba686a597cd747 # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git checkout -b feature-change 699f34c472f8cdb12eb730ff57ba686a597cd747 # timeout=10
+Commit message: "Update Dockerfile"
+ > git rev-list --no-walk 9dcf3ca2da2625e931de297c23cc90bc998e423a # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (SonarQube Analysis)
+[Pipeline] withSonarQubeEnv
+Injecting SonarQube environment variables using the configuration: sonar-server
+[Pipeline] {
+[Pipeline] sh
++ /var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonar-scanner/bin/sonar-scanner -Dsonar.projectKey=BookMyShow -Dsonar.projectName=BookMyShow
+14:08:44.031 INFO  Scanner configuration file: /var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonar-scanner/conf/sonar-scanner.properties
+14:08:44.040 INFO  Project root configuration file: NONE
+14:08:44.084 INFO  SonarScanner CLI 8.0.0.6341
+14:08:44.118 INFO  Linux 6.14.0-1018-aws amd64
+14:08:46.496 INFO  Communicating with SonarQube Community Build 26.3.0.120487
+14:08:46.498 INFO  JRE provisioning: os[linux], arch[x86_64]
+14:08:47.426 INFO  Starting SonarScanner Engine...
+14:08:47.427 INFO  Java 21.0.9 Eclipse Adoptium (64-bit)
+14:08:50.387 INFO  Load global settings
+14:08:50.611 INFO  Load global settings (done) | time=221ms
+14:08:50.614 INFO  Server id: 147B411E-AZy-Bi6t171ST6NbFRLo
+14:08:50.635 INFO  Loading required plugins
+14:08:50.637 INFO  Load plugins index
+14:08:50.663 INFO  Load plugins index (done) | time=25ms
+14:08:50.664 INFO  Load/download plugins
+14:08:50.737 INFO  Load/download plugins (done) | time=76ms
+14:08:51.503 INFO  Process project properties
+14:08:51.504 INFO  Process project properties (done) | time=0ms
+14:08:51.526 INFO  Project key: BookMyShow
+14:08:51.527 INFO  Base dir: /var/lib/jenkins/workspace/BookMyShow
+14:08:51.531 INFO  Working dir: /var/lib/jenkins/workspace/BookMyShow/.scannerwork
+14:08:51.557 INFO  Load project settings for component key: 'BookMyShow'
+14:08:51.585 INFO  Load project settings for component key: 'BookMyShow' (done) | time=27ms
+14:08:51.660 INFO  Load quality profiles
+14:08:51.870 INFO  Load quality profiles (done) | time=211ms
+14:08:51.900 INFO  Auto-configuring with CI 'Jenkins'
+14:08:51.992 INFO  Load active rules
+14:08:52.845 INFO  Load active rules (done) | time=855ms
+14:08:52.860 INFO  Load analysis cache
+14:08:52.925 INFO  Load analysis cache | time=61ms
+14:08:53.355 INFO  Preprocessing files...
+14:08:53.627 INFO  6 languages detected in 106 preprocessed files (done) | time=268ms
+14:08:53.629 INFO  30 files ignored because of scm ignore settings
+14:08:53.633 INFO  Loading plugins for detected languages
+14:08:53.637 INFO  Load/download plugins
+14:08:53.656 INFO  Load/download plugins (done) | time=19ms
+14:08:54.026 INFO  Load project repositories
+14:08:54.297 INFO  Load project repositories (done) | time=271ms
+14:08:54.358 INFO  Indexing files...
+14:08:54.359 INFO  Project configuration:
+14:08:54.417 INFO  106 files indexed (done) | time=59ms
+14:08:54.419 INFO  Quality profile for css: Sonar way
+14:08:54.421 INFO  Quality profile for docker: Sonar way
+14:08:54.423 INFO  Quality profile for js: Sonar way
+14:08:54.423 INFO  Quality profile for json: Sonar way
+14:08:54.425 INFO  Quality profile for web: Sonar way
+14:08:54.425 INFO  Quality profile for yaml: Sonar way
+14:08:54.428 INFO  ------------- Run sensors on module BookMyShow
+14:08:54.514 INFO  Load metrics repository
+14:08:54.561 INFO  Load metrics repository (done) | time=51ms
+14:08:55.257 INFO  Reflections took 188 ms to scan 1 urls, producing 24 keys and 257 values
+14:08:55.552 INFO  Sensor IaC CloudFormation Sensor [iac]
+14:08:56.178 INFO  There are no files to be analyzed for the CloudFormation language
+14:08:56.179 INFO  Sensor IaC CloudFormation Sensor [iac] (done) | time=626ms
+14:08:56.182 INFO  Sensor IaC cfn-lint report Sensor [iac]
+14:08:56.182 INFO  Sensor IaC cfn-lint report Sensor [iac] (done) | time=1ms
+14:08:56.182 INFO  Sensor IaC Kustomization Sensor [iac]
+14:08:56.183 INFO  Sensor IaC Kustomization Sensor [iac] (done) | time=4ms
+14:08:56.183 INFO  Sensor IaC hadolint report Sensor [iac]
+14:08:56.185 INFO  Sensor IaC hadolint report Sensor [iac] (done) | time=0ms
+14:08:56.185 INFO  Sensor IaC Azure Resource Manager Sensor [iac]
+14:08:56.190 INFO  There are no files to be analyzed for the Azure Resource Manager language
+14:08:56.190 INFO  Sensor IaC Azure Resource Manager Sensor [iac] (done) | time=7ms
+14:08:56.190 INFO  Sensor Java Config Sensor [iac]
+14:08:56.203 INFO  There are no files to be analyzed for the Java language
+14:08:56.203 INFO  Sensor Java Config Sensor [iac] (done) | time=11ms
+14:08:56.208 INFO  Sensor IaC Docker Sensor [iac]
+14:08:56.378 INFO  1 source file to be analyzed
+14:08:56.532 INFO  1/1 source file has been analyzed
+14:08:56.541 INFO  Sensor IaC Docker Sensor [iac] (done) | time=335ms
+14:08:56.541 INFO  Sensor HTML [web]
+14:08:56.651 INFO  Sensor HTML [web] (done) | time=116ms
+14:08:56.654 INFO  Sensor JavaScript/TypeScript analysis [javascript]
+14:08:57.064 INFO  Detected os: Linux arch: amd64 alpine: false. Platform: LINUX_X64
+14:08:57.067 INFO  Deploy location /var/lib/jenkins/.sonar/js/node-runtime, tagetRuntime: /var/lib/jenkins/.sonar/js/node-runtime/node,  version: /var/lib/jenkins/.sonar/js/node-runtime/version.txt
+14:08:57.090 INFO  Using embedded Node.js runtime.
+14:08:57.092 INFO  Using Node.js executable: '/var/lib/jenkins/.sonar/js/node-runtime/node'.
+14:09:00.929 INFO  Memory configuration: OS (7820 MB), Node.js (2240 MB).
+14:09:01.061 INFO  WebSocket client connected on /ws
+14:09:01.066 INFO  Plugin version: [11.8.0.37897]
+14:09:04.334 INFO  Using generated tsconfig.json file using wildcards /tmp/tsconfig-yh3kGP.json
+14:09:12.842 INFO  Found 1 tsconfig.json file(s): [/tmp/tsconfig-yh3kGP.json]
+14:09:12.842 INFO  62 source files to be analyzed
+14:09:12.843 INFO  Creating TypeScript program
+14:09:12.843 INFO  TypeScript(5.9.3) configuration file /tmp/tsconfig-yh3kGP.json
+14:09:12.843 INFO  62/62 source files have been analyzed
+14:09:12.852 INFO  Hit the cache for 0 out of 62
+14:09:12.854 INFO  Miss the cache for 62 out of 62: ANALYSIS_MODE_INELIGIBLE [62/62]
+14:09:12.855 INFO  Sensor JavaScript/TypeScript analysis [javascript] (done) | time=16201ms
+14:09:12.856 INFO  Sensor JavaScript inside YAML analysis [javascript]
+14:09:12.862 INFO  No input files found for analysis
+14:09:12.863 INFO  Hit the cache for 0 out of 0
+14:09:12.864 INFO  Miss the cache for 0 out of 0
+14:09:12.868 INFO  Sensor JavaScript inside YAML analysis [javascript] (done) | time=9ms
+14:09:12.868 INFO  Sensor JavaScript inside HTML analysis [javascript]
+14:09:12.875 INFO  1 source file to be analyzed
+14:09:12.952 INFO  1/1 source file has been analyzed
+14:09:12.953 INFO  Hit the cache for 0 out of 1
+14:09:12.954 INFO  Miss the cache for 1 out of 1: ANALYSIS_MODE_INELIGIBLE [1/1]
+14:09:12.958 INFO  Sensor JavaScript inside HTML analysis [javascript] (done) | time=89ms
+14:09:12.959 INFO  Sensor CSS Rules [javascript]
+14:09:12.968 INFO  17 source files to be analyzed
+14:09:13.481 INFO  17/17 source files have been analyzed
+14:09:13.481 INFO  Hit the cache for 0 out of 0
+14:09:13.483 INFO  Miss the cache for 0 out of 0
+14:09:13.483 INFO  Sensor CSS Rules [javascript] (done) | time=530ms
+14:09:13.483 INFO  Sensor CSS Metrics [javascript]
+14:09:13.626 INFO  Sensor CSS Metrics [javascript] (done) | time=143ms
+14:09:13.626 INFO  Sensor IaC Kubernetes Sensor [iac]
+14:09:13.804 INFO  2 source files to be parsed
+14:09:13.874 INFO  2/2 source files have been parsed
+14:09:13.875 INFO  2 source files to be analyzed
+14:09:13.898 INFO  2/2 source files have been analyzed
+14:09:13.899 INFO  2 source files to be checked
+14:09:13.938 INFO  2/2 source files have been checked
+14:09:13.939 INFO  Sensor IaC Kubernetes Sensor [iac] (done) | time=313ms
+14:09:13.940 INFO  Sensor TextAndSecretsSensor [text]
+14:09:13.987 INFO  Available processors: 2
+14:09:13.987 INFO  Using 2 threads for analysis.
+14:09:14.602 INFO  The property "sonar.tests" is not set. To improve the analysis accuracy, we categorize a file as a test file if any of the following is true:
+  * The filename starts with "test"
+  * The filename contains "test." or "tests."
+  * Any directory in the file path is named: "doc", "docs", "test", "tests", "mock" or "mocks"
+  * Any directory in the file path has a name ending in "test" or "tests"
+
+14:09:14.654 INFO  Start fetching files for the text and secrets analysis
+14:09:14.675 INFO  Using Git CLI to retrieve dirty files
+14:09:14.736 INFO  Retrieving language associated files and files included via "sonar.text.inclusions" that are tracked by git
+14:09:14.739 INFO  Starting the text and secrets analysis
+14:09:14.744 INFO  85 source files to be analyzed for the text and secrets analysis
+14:09:15.835 INFO  85/85 source files have been analyzed for the text and secrets analysis
+14:09:15.844 INFO  Sensor TextAndSecretsSensor [text] (done) | time=1904ms
+14:09:15.852 INFO  ------------- Run sensors on project
+14:09:16.174 INFO  Sensor Zero Coverage Sensor
+14:09:16.212 INFO  Sensor Zero Coverage Sensor (done) | time=36ms
+14:09:16.213 INFO  ------------- Gather SCA dependencies on project
+14:09:16.237 INFO  Dependency analysis skipped
+14:09:16.274 INFO  SCM Publisher SCM provider for this project is: git
+14:09:16.280 INFO  SCM Publisher 1 source file to be analyzed
+14:09:16.637 INFO  SCM Publisher 1/1 source file have been analyzed (done) | time=360ms
+14:09:16.676 INFO  CPD Executor 10 files had no CPD blocks
+14:09:16.676 INFO  CPD Executor Calculating CPD for 53 files
+14:09:16.757 INFO  CPD Executor CPD calculation finished (done) | time=83ms
+14:09:16.772 INFO  SCM revision ID '699f34c472f8cdb12eb730ff57ba686a597cd747'
+14:09:17.055 INFO  Analysis report generated in 262ms, dir size=885.4 kB
+14:09:17.328 INFO  Analysis report compressed in 273ms, zip size=431.7 kB
+14:09:17.451 INFO  Analysis report uploaded in 124ms
+14:09:17.460 INFO  ANALYSIS SUCCESSFUL, you can find the results at: http://98.130.85.198:9000/dashboard?id=BookMyShow
+14:09:17.461 INFO  Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+14:09:17.462 INFO  More about the report processing at http://98.130.85.198:9000/api/ce/task?id=b03f4b02-df80-4034-943a-72d94c2ed7c8
+14:09:17.791 INFO  Analysis total time: 26.961 s
+14:09:17.795 INFO  SonarScanner Engine completed successfully
+14:09:18.167 INFO  EXECUTION SUCCESS
+14:09:18.169 INFO  Total time: 34.254s
+[Pipeline] }
+[Pipeline] // withSonarQubeEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Install Dependencies (NPM))
+[Pipeline] dir
+Running in /var/lib/jenkins/workspace/BookMyShow/bookmyshow-app
+[Pipeline] {
+[Pipeline] sh
++ npm install
+
+added 2319 packages, and audited 2320 packages in 1m
+
+5 packages are looking for funding
+  run `npm fund` for details
+
+192 vulnerabilities (7 low, 111 moderate, 55 high, 19 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Trivy FS Scan)
+[Pipeline] sh
++ trivy fs .
+2026-03-05T14:10:27Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-03-05T14:10:27Z	INFO	[secret] Secret scanning is enabled
+2026-03-05T14:10:27Z	INFO	[secret] If your scanning is slow, please try '--scanners vuln' to disable secret scanning
+2026-03-05T14:10:27Z	INFO	[secret] Please see https://trivy.dev/docs/v0.69/guide/scanner/secret#recommendation for faster secret detection
+2026-03-05T14:10:30Z	INFO	Number of language-specific files	num=1
+2026-03-05T14:10:30Z	INFO	[npm] Detecting vulnerabilities...
+
+Report Summary
+
+┌──────────────────────────────────┬──────┬─────────────────┬─────────┐
+│              Target              │ Type │ Vulnerabilities │ Secrets │
+├──────────────────────────────────┼──────┼─────────────────┼─────────┤
+│ bookmyshow-app/package-lock.json │ npm  │       150       │    -    │
+└──────────────────────────────────┴──────┴─────────────────┴─────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+
+For OSS Maintainers: VEX Notice
+--------------------------------
+If you're an OSS maintainer and Trivy has detected vulnerabilities in your project that you believe are not actually exploitable, consider issuing a VEX (Vulnerability Exploitability eXchange) statement.
+VEX allows you to communicate the actual status of vulnerabilities in your project, improving security transparency and reducing false positives for your users.
+Learn more and start using VEX: https://trivy.dev/docs/v0.69/guide/supply-chain/vex/repo#publishing-vex-documents
+
+To disable this notice, set the TRIVY_DISABLE_VEX_NOTICE environment variable.
+
+
+bookmyshow-app/package-lock.json (npm)
+======================================
+Total: 150 (UNKNOWN: 0, LOW: 17, MEDIUM: 45, HIGH: 71, CRITICAL: 17)
+
+┌────────────────────────┬─────────────────────┬──────────┬──────────┬───────────────────┬──────────────────────────────────────────────────────────┬──────────────────────────────────────────────────────────────┐
+│        Library         │    Vulnerability    │ Severity │  Status  │ Installed Version │                      Fixed Version                       │                            Title                             │
+├────────────────────────┼─────────────────────┼──────────┼──────────┼───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ @babel/helpers         │ CVE-2025-27789      │ MEDIUM   │ fixed    │ 7.13.10           │ 7.26.10, 8.0.0-alpha.17                                  │ Babel has inefficient RegExp complexity in generated code    │
+│                        │                     │          │          │                   │                                                          │ with .replace when transpiling...                            │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2025-27789                   │
+├────────────────────────┤                     │          │          ├───────────────────┤                                                          │                                                              │
+│ @babel/runtime         │                     │          │          │ 7.12.1            │                                                          │                                                              │
+│                        │                     │          │          │                   │                                                          │                                                              │
+│                        │                     │          │          │                   │                                                          │                                                              │
+│                        │                     │          │          ├───────────────────┤                                                          │                                                              │
+│                        │                     │          │          │ 7.13.10           │                                                          │                                                              │
+│                        │                     │          │          │                   │                                                          │                                                              │
+│                        │                     │          │          │                   │                                                          │                                                              │
+├────────────────────────┤                     │          │          │                   │                                                          │                                                              │
+│ @babel/runtime-corejs3 │                     │          │          │                   │                                                          │                                                              │
+│                        │                     │          │          │                   │                                                          │                                                              │
+│                        │                     │          │          │                   │                                                          │                                                              │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ @babel/traverse        │ CVE-2023-45133      │ CRITICAL │          │ 7.13.0            │ 7.23.2, 8.0.0-alpha.4                                    │ babel: arbitrary code execution                              │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2023-45133                   │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ ajv                    │ CVE-2025-69873      │ MEDIUM   │          │ 6.12.6            │ 8.18.0, 6.14.0                                           │ ajv: ReDoS via $data reference                               │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2025-69873                   │
+│                        │                     │          │          ├───────────────────┤                                                          │                                                              │
+│                        │                     │          │          │ 7.2.1             │                                                          │                                                              │
+│                        │                     │          │          │                   │                                                          │                                                              │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ ansi-html              │ CVE-2021-23424      │ HIGH     │          │ 0.0.7             │ 0.0.8                                                    │ nodejs-ansi-html: ReDoS via crafted string                   │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2021-23424                   │
+├────────────────────────┼─────────────────────┤          │          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ ansi-regex             │ CVE-2021-3807       │          │          │ 4.1.0             │ 6.0.1, 5.0.1, 4.1.1, 3.0.1                               │ nodejs-ansi-regex: Regular expression denial of service      │
+│                        │                     │          │          │                   │                                                          │ (ReDoS) matching ANSI escape codes                           │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2021-3807                    │
+│                        │                     │          │          ├───────────────────┤                                                          │                                                              │
+│                        │                     │          │          │ 5.0.0             │                                                          │                                                              │
+│                        │                     │          │          │                   │                                                          │                                                              │
+│                        │                     │          │          │                   │                                                          │                                                              │
+├────────────────────────┼─────────────────────┤          │          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ async                  │ CVE-2021-43138      │          │          │ 2.6.3             │ 3.2.2, 2.6.4                                             │ async: Prototype Pollution in async                          │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2021-43138                   │
+├────────────────────────┼─────────────────────┤          │          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ axios                  │ CVE-2021-3749       │          │          │ 0.21.1            │ 0.21.2                                                   │ nodejs-axios: Regular expression denial of service in trim   │
+│                        │                     │          │          │                   │                                                          │ function                                                     │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2021-3749                    │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2025-27152      │          │          │                   │ 1.8.2, 0.30.0                                            │ axios: Possible SSRF and Credential Leakage via Absolute URL │
+│                        │                     │          │          │                   │                                                          │ in axios Requests...                                         │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2025-27152                   │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-25639      │          │          │                   │ 1.13.5, 0.30.3                                           │ axios: Axios affected by Denial of Service via __proto__ Key │
+│                        │                     │          │          │                   │                                                          │ in mergeConfig...                                            │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2026-25639                   │
+│                        ├─────────────────────┼──────────┤          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2023-45857      │ MEDIUM   │          │                   │ 1.6.0, 0.28.0                                            │ axios: exposure of confidential data stored in cookies       │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2023-45857                   │
+├────────────────────────┼─────────────────────┤          │          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ bn.js                  │ CVE-2026-2739       │          │          │ 4.12.0            │ 4.12.3, 5.2.3                                            │ bn.js: bn.js: Denial of Service via calling maskn(0)         │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2026-2739                    │
+│                        │                     │          │          ├───────────────────┤                                                          │                                                              │
+│                        │                     │          │          │ 5.2.0             │                                                          │                                                              │
+│                        │                     │          │          │                   │                                                          │                                                              │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ body-parser            │ CVE-2024-45590      │ HIGH     │          │ 1.19.0            │ 1.20.3                                                   │ body-parser: Denial of Service Vulnerability in body-parser  │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2024-45590                   │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ brace-expansion        │ CVE-2025-5889       │ LOW      │          │ 1.1.11            │ 2.0.2, 1.1.12, 3.0.1, 4.0.1                              │ brace-expansion: juliangruber brace-expansion index.js       │
+│                        │                     │          │          │                   │                                                          │ expand redos                                                 │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2025-5889                    │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ braces                 │ CVE-2024-4068       │ HIGH     │          │ 2.3.2             │ 3.0.3                                                    │ braces: fails to limit the number of characters it can       │
+│                        │                     │          │          │                   │                                                          │ handle                                                       │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2024-4068                    │
+│                        │                     │          │          ├───────────────────┤                                                          │                                                              │
+│                        │                     │          │          │ 3.0.2             │                                                          │                                                              │
+│                        │                     │          │          │                   │                                                          │                                                              │
+│                        │                     │          │          │                   │                                                          │                                                              │
+├────────────────────────┼─────────────────────┤          │          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ browserify-sign        │ CVE-2023-46234      │          │          │ 4.2.1             │ 4.2.2                                                    │ browserify-sign: upper bound check issue in dsaVerify leads  │
+│                        │                     │          │          │                   │                                                          │ to a signature forgery...                                    │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2023-46234                   │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ browserslist           │ CVE-2021-23364      │ MEDIUM   │          │ 4.14.2            │ 4.16.5                                                   │ browserslist: parsing of invalid queries could result in     │
+│                        │                     │          │          │                   │                                                          │ Regular Expression Denial of...                              │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2021-23364                   │
+│                        │                     │          │          ├───────────────────┤                                                          │                                                              │
+│                        │                     │          │          │ 4.16.3            │                                                          │                                                              │
+│                        │                     │          │          │                   │                                                          │                                                              │
+│                        │                     │          │          │                   │                                                          │                                                              │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ cipher-base            │ CVE-2025-9287       │ CRITICAL │          │ 1.0.4             │ 1.0.5                                                    │ cipher-base: Cipher-base hash manipulation                   │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2025-9287                    │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ cookie                 │ CVE-2024-47764      │ LOW      │          │ 0.4.0             │ 0.7.0                                                    │ cookie: cookie accepts cookie name, path, and domain with    │
+│                        │                     │          │          │                   │                                                          │ out of bounds...                                             │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2024-47764                   │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ cross-spawn            │ CVE-2024-21538      │ HIGH     │          │ 6.0.5             │ 7.0.5, 6.0.6                                             │ cross-spawn: regular expression denial of service            │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2024-21538                   │
+│                        │                     │          │          ├───────────────────┤                                                          │                                                              │
+│                        │                     │          │          │ 7.0.3             │                                                          │                                                              │
+│                        │                     │          │          │                   │                                                          │                                                              │
+├────────────────────────┼─────────────────────┤          │          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ decode-uri-component   │ CVE-2022-38900      │          │          │ 0.2.0             │ 0.2.1                                                    │ decode-uri-component: improper input validation resulting in │
+│                        │                     │          │          │                   │                                                          │ DoS                                                          │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2022-38900                   │
+├────────────────────────┼─────────────────────┤          │          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ dns-packet             │ CVE-2021-23386      │          │          │ 1.3.1             │ 5.2.2, 1.3.2                                             │ dns-packet: does not always fill buffers before forming      │
+│                        │                     │          │          │                   │                                                          │ network packets which couls...                               │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2021-23386                   │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ ejs                    │ CVE-2022-29078      │ CRITICAL │          │ 2.7.4             │ 3.1.7                                                    │ ejs: server-side template injection in outputFunctionName    │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2022-29078                   │
+│                        ├─────────────────────┼──────────┤          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2024-33883      │ MEDIUM   │          │                   │ 3.1.10                                                   │ The ejs (aka Embedded JavaScript templates) package before   │
+│                        │                     │          │          │                   │                                                          │ 3.1.10 for ......                                            │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2024-33883                   │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ elliptic               │ GHSA-vjh7-7g9h-fjfh │ CRITICAL │          │ 6.5.4             │ 6.6.1                                                    │ Elliptic's private key extraction in ECDSA upon signing a    │
+│                        │                     │          │          │                   │                                                          │ malformed input (e.g....                                     │
+│                        │                     │          │          │                   │                                                          │ https://github.com/advisories/GHSA-vjh7-7g9h-fjfh            │
+│                        ├─────────────────────┼──────────┤          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2024-42459      │ LOW      │          │                   │ 6.5.7                                                    │ elliptic: nodejs/elliptic: EDDSA signature malleability due  │
+│                        │                     │          │          │                   │                                                          │ to missing signature length check                            │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2024-42459                   │
+│                        ├─────────────────────┤          │          │                   │                                                          ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2024-42460      │          │          │                   │                                                          │ elliptic: nodejs/elliptic: ECDSA signature malleability due  │
+│                        │                     │          │          │                   │                                                          │ to missing checks                                            │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2024-42460                   │
+│                        ├─────────────────────┤          │          │                   │                                                          ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2024-42461      │          │          │                   │                                                          │ elliptic: nodejs/elliptic: ECDSA implementation malleability │
+│                        │                     │          │          │                   │                                                          │ due to BER-enconded signatures being allowed                 │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2024-42461                   │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2024-48948      │          │          │                   │ 6.6.0                                                    │ elliptic: ECDSA signature verification error may reject      │
+│                        │                     │          │          │                   │                                                          │ legitimate transactions                                      │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2024-48948                   │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2024-48949      │          │          │                   │ 6.5.6                                                    │ elliptic: Missing Validation in Elliptic's EDDSA Signature   │
+│                        │                     │          │          │                   │                                                          │ Verification                                                 │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2024-48949                   │
+│                        ├─────────────────────┤          ├──────────┤                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2025-14505      │          │ affected │                   │                                                          │ elliptic: Key handling flaws in Elliptic                     │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2025-14505                   │
+├────────────────────────┼─────────────────────┤          ├──────────┼───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ es5-ext                │ CVE-2024-27088      │          │ fixed    │ 0.10.53           │ 0.10.63                                                  │ es5-ext contains ECMAScript 5 extensions. Passing functions  │
+│                        │                     │          │          │                   │                                                          │ with very ...                                                │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2024-27088                   │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ eventsource            │ CVE-2022-1650       │ CRITICAL │          │ 1.0.7             │ 1.1.1, 2.0.2                                             │ eventsource: Exposure of Sensitive Information               │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2022-1650                    │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ express                │ CVE-2024-29041      │ MEDIUM   │          │ 4.17.1            │ 4.19.2, 5.0.0-beta.3                                     │ express: cause malformed URLs to be evaluated                │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2024-29041                   │
+│                        ├─────────────────────┼──────────┤          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2024-43796      │ LOW      │          │                   │ 4.20.0, 5.0.0                                            │ express: Improper Input Handling in Express Redirects        │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2024-43796                   │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ follow-redirects       │ CVE-2022-0155       │ HIGH     │          │ 1.13.3            │ 1.14.7                                                   │ follow-redirects: Exposure of Private Personal Information   │
+│                        │                     │          │          │                   │                                                          │ to an Unauthorized Actor                                     │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2022-0155                    │
+│                        ├─────────────────────┼──────────┤          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2022-0536       │ MEDIUM   │          │                   │ 1.14.8                                                   │ follow-redirects: Exposure of Sensitive Information via      │
+│                        │                     │          │          │                   │                                                          │ Authorization Header leak                                    │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2022-0536                    │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2023-26159      │          │          │                   │ 1.15.4                                                   │ follow-redirects: Improper Input Validation due to the       │
+│                        │                     │          │          │                   │                                                          │ improper handling of URLs by...                              │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2023-26159                   │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2024-28849      │          │          │                   │ 1.15.6                                                   │ follow-redirects: Possible credential leak                   │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2024-28849                   │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ form-data              │ CVE-2025-7783       │ CRITICAL │          │ 2.3.3             │ 2.5.4, 3.0.4, 4.0.4                                      │ form-data: Unsafe random function in form-data               │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2025-7783                    │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ hosted-git-info        │ CVE-2021-23362      │ MEDIUM   │          │ 2.8.8             │ 2.8.9, 3.0.8                                             │ nodejs-hosted-git-info: Regular Expression denial of service │
+│                        │                     │          │          │                   │                                                          │ via shortcutMatch in fromUrl()                               │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2021-23362                   │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ http-proxy-middleware  │ CVE-2024-21536      │ HIGH     │          │ 0.19.1            │ 2.0.7, 3.0.3                                             │ http-proxy-middleware: Denial of Service                     │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2024-21536                   │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ immer                  │ CVE-2021-23436      │ CRITICAL │          │ 8.0.1             │ 9.0.6                                                    │ immer: type confusion vulnerability can lead to a bypass of  │
+│                        │                     │          │          │                   │                                                          │ CVE-2020-28477                                               │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2021-23436                   │
+│                        ├─────────────────────┼──────────┤          │                   │                                                          ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2021-3757       │ HIGH     │          │                   │                                                          │ nodejs-immer: prototype pollution may lead to DoS or remote  │
+│                        │                     │          │          │                   │                                                          │ code execution                                               │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2021-3757                    │
+├────────────────────────┼─────────────────────┤          ├──────────┼───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ ip                     │ CVE-2024-29415      │          │ affected │ 1.1.5             │                                                          │ node-ip: Incomplete fix for CVE-2023-42282                   │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2024-29415                   │
+│                        ├─────────────────────┼──────────┼──────────┤                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2023-42282      │ LOW      │ fixed    │                   │ 2.0.1, 1.1.9                                             │ nodejs-ip: arbitrary code execution via the isPublic()       │
+│                        │                     │          │          │                   │                                                          │ function                                                     │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2023-42282                   │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ is-svg                 │ CVE-2021-28092      │ HIGH     │          │ 3.0.0             │ 4.2.2                                                    │ nodejs-is-svg: ReDoS via malicious string                    │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2021-28092                   │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2021-29059      │          │          │                   │ 4.3.0                                                    │ nodejs-is-svg: Regular expression denial of service if the   │
+│                        │                     │          │          │                   │                                                          │ application is provided and...                               │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2021-29059                   │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ js-yaml                │ CVE-2025-64718      │ MEDIUM   │          │ 3.14.1            │ 4.1.1, 3.14.2                                            │ js-yaml: js-yaml prototype pollution in merge                │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2025-64718                   │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ json-schema            │ CVE-2021-3918       │ CRITICAL │          │ 0.2.3             │ 0.4.0                                                    │ nodejs-json-schema: Prototype pollution vulnerability        │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2021-3918                    │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ json5                  │ CVE-2022-46175      │ HIGH     │          │ 1.0.1             │ 2.2.2, 1.0.2                                             │ json5: Prototype Pollution in JSON5 via Parse Method         │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2022-46175                   │
+│                        │                     │          │          ├───────────────────┤                                                          │                                                              │
+│                        │                     │          │          │ 2.2.0             │                                                          │                                                              │
+│                        │                     │          │          │                   │                                                          │                                                              │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ loader-utils           │ CVE-2022-37601      │ CRITICAL │          │ 1.2.3             │ 2.0.3, 1.4.1                                             │ loader-utils: prototype pollution in function parseQuery in  │
+│                        │                     │          │          │                   │                                                          │ parseQuery.js                                                │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2022-37601                   │
+│                        ├─────────────────────┼──────────┤          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2022-37599      │ HIGH     │          │                   │ 1.4.2, 2.0.4, 3.2.1                                      │ loader-utils: regular expression denial of service in        │
+│                        │                     │          │          │                   │                                                          │ interpolateName.js                                           │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2022-37599                   │
+│                        ├─────────────────────┤          │          │                   │                                                          ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2022-37603      │          │          │                   │                                                          │ loader-utils: Regular expression denial of service           │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2022-37603                   │
+│                        ├─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2022-37601      │ CRITICAL │          │ 1.4.0             │ 2.0.3, 1.4.1                                             │ loader-utils: prototype pollution in function parseQuery in  │
+│                        │                     │          │          │                   │                                                          │ parseQuery.js                                                │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2022-37601                   │
+│                        ├─────────────────────┼──────────┤          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2022-37599      │ HIGH     │          │                   │ 1.4.2, 2.0.4, 3.2.1                                      │ loader-utils: regular expression denial of service in        │
+│                        │                     │          │          │                   │                                                          │ interpolateName.js                                           │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2022-37599                   │
+│                        ├─────────────────────┤          │          │                   │                                                          ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2022-37603      │          │          │                   │                                                          │ loader-utils: Regular expression denial of service           │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2022-37603                   │
+│                        ├─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2022-37601      │ CRITICAL │          │ 2.0.0             │ 2.0.3, 1.4.1                                             │ loader-utils: prototype pollution in function parseQuery in  │
+│                        │                     │          │          │                   │                                                          │ parseQuery.js                                                │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2022-37601                   │
+│                        ├─────────────────────┼──────────┤          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2022-37599      │ HIGH     │          │                   │ 1.4.2, 2.0.4, 3.2.1                                      │ loader-utils: regular expression denial of service in        │
+│                        │                     │          │          │                   │                                                          │ interpolateName.js                                           │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2022-37599                   │
+│                        ├─────────────────────┤          │          │                   │                                                          ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2022-37603      │          │          │                   │                                                          │ loader-utils: Regular expression denial of service           │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2022-37603                   │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ lodash                 │ CVE-2025-13465      │ MEDIUM   │          │ 4.17.21           │ 4.17.23                                                  │ lodash: prototype pollution in _.unset and _.omit functions  │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2025-13465                   │
+├────────────────────────┼─────────────────────┼──────────┼──────────┼───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ lodash.template        │ CVE-2021-23337      │ HIGH     │ affected │ 4.5.0             │                                                          │ nodejs-lodash: command injection via template                │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2021-23337                   │
+├────────────────────────┼─────────────────────┼──────────┼──────────┼───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ micromatch             │ CVE-2024-4067       │ MEDIUM   │ fixed    │ 3.1.10            │ 4.0.8                                                    │ micromatch: vulnerable to Regular Expression Denial of       │
+│                        │                     │          │          │                   │                                                          │ Service                                                      │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2024-4067                    │
+│                        │                     │          │          ├───────────────────┤                                                          │                                                              │
+│                        │                     │          │          │ 4.0.2             │                                                          │                                                              │
+│                        │                     │          │          │                   │                                                          │                                                              │
+│                        │                     │          │          │                   │                                                          │                                                              │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ minimatch              │ CVE-2022-3517       │ HIGH     │          │ 3.0.4             │ 3.0.5                                                    │ nodejs-minimatch: ReDoS via the braceExpand function         │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2022-3517                    │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-26996      │          │          │                   │ 10.2.1, 9.0.6, 8.0.5, 7.4.7, 6.2.1, 5.1.7, 4.2.4, 3.1.3  │ minimatch: minimatch: Denial of Service via specially        │
+│                        │                     │          │          │                   │                                                          │ crafted glob patterns                                        │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2026-26996                   │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-27903      │          │          │                   │ 10.2.3, 9.0.7, 8.0.6, 7.4.8, 6.2.2, 5.1.8, 4.2.5, 3.1.3  │ minimatch: minimatch: Denial of Service due to unbounded     │
+│                        │                     │          │          │                   │                                                          │ recursive backtracking via crafted...                        │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2026-27903                   │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-27904      │          │          │                   │ 10.2.3, 9.0.7, 8.0.6, 7.4.8, 6.2.2, 5.1.8, 4.2.5, 3.1.4  │ minimatch: Minimatch: Denial of Service via catastrophic     │
+│                        │                     │          │          │                   │                                                          │ backtracking in glob expressions                             │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2026-27904                   │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ minimist               │ CVE-2021-44906      │ CRITICAL │          │ 1.2.5             │ 1.2.6, 0.2.4                                             │ minimist: prototype pollution                                │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2021-44906                   │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ moment                 │ CVE-2022-24785      │ HIGH     │          │ 2.29.1            │ 2.29.2                                                   │ Moment.js: Path traversal in moment.locale                   │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2022-24785                   │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2022-31129      │          │          │                   │ 2.29.4                                                   │ moment: inefficient parsing algorithm resulting in DoS       │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2022-31129                   │
+├────────────────────────┼─────────────────────┤          │          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ node-forge             │ CVE-2022-24771      │          │          │ 0.10.0            │ 1.3.0                                                    │ node-forge: Signature verification leniency in checking      │
+│                        │                     │          │          │                   │                                                          │ `digestAlgorithm` structure can lead to signature...         │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2022-24771                   │
+│                        ├─────────────────────┤          │          │                   │                                                          ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2022-24772      │          │          │                   │                                                          │ node-forge: Signature verification failing to check tailing  │
+│                        │                     │          │          │                   │                                                          │ garbage bytes can lead to...                                 │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2022-24772                   │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2025-12816      │          │          │                   │ 1.3.2                                                    │ node-forge: node-forge: Interpretation conflict              │
+│                        │                     │          │          │                   │                                                          │ vulnerability allows bypassing cryptographic verifications   │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2025-12816                   │
+│                        ├─────────────────────┤          │          │                   │                                                          ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2025-66031      │          │          │                   │                                                          │ node-forge: node-forge ASN.1 Unbounded Recursion             │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2025-66031                   │
+│                        ├─────────────────────┼──────────┤          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2022-0122       │ MEDIUM   │          │                   │ 1.0.0                                                    │ Open Redirect in node-forge                                  │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2022-0122                    │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2022-24773      │          │          │                   │ 1.3.0                                                    │ node-forge: Signature verification leniency in checking      │
+│                        │                     │          │          │                   │                                                          │ `DigestInfo` structure                                       │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2022-24773                   │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2025-66030      │          │          │                   │ 1.3.2                                                    │ node-forge: node-forge: Integer Overflow allows OID-based    │
+│                        │                     │          │          │                   │                                                          │ security bypass                                              │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2025-66030                   │
+│                        ├─────────────────────┼──────────┤          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ GHSA-5rrq-pxf6-6jx5 │ LOW      │          │                   │ 1.0.0                                                    │ Prototype Pollution in node-forge debug API.                 │
+│                        │                     │          │          │                   │                                                          │ https://github.com/advisories/GHSA-5rrq-pxf6-6jx5            │
+│                        ├─────────────────────┤          │          │                   │                                                          ├──────────────────────────────────────────────────────────────┤
+│                        │ GHSA-gf8q-jrpm-jvxq │          │          │                   │                                                          │ URL parsing in node-forge could lead to undesired behavior.  │
+│                        │                     │          │          │                   │                                                          │ https://github.com/advisories/GHSA-gf8q-jrpm-jvxq            │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ nth-check              │ CVE-2021-3803       │ HIGH     │          │ 1.0.2             │ 2.0.1                                                    │ nodejs-nth-check: inefficient regular expression complexity  │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2021-3803                    │
+├────────────────────────┼─────────────────────┼──────────┤          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ on-headers             │ CVE-2025-7339       │ LOW      │          │                   │ 1.1.0                                                    │ on-headers: on-headers vulnerable to http response header    │
+│                        │                     │          │          │                   │                                                          │ manipulation                                                 │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2025-7339                    │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ path-parse             │ CVE-2021-23343      │ MEDIUM   │          │ 1.0.6             │ 1.0.7                                                    │ nodejs-path-parse: ReDoS via splitDeviceRe, splitTailRe and  │
+│                        │                     │          │          │                   │                                                          │ splitPathRe                                                  │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2021-23343                   │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ path-to-regexp         │ CVE-2024-45296      │ HIGH     │          │ 0.1.7             │ 1.9.0, 0.1.10, 8.0.0, 3.3.0, 6.3.0                       │ path-to-regexp: Backtracking regular expressions cause ReDoS │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2024-45296                   │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2024-52798      │          │          │                   │ 0.1.12                                                   │ path-to-regexp: path-to-regexp Unpatched `path-to-regexp`    │
+│                        │                     │          │          │                   │                                                          │ ReDoS in 0.1.x                                               │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2024-52798                   │
+│                        ├─────────────────────┤          │          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2024-45296      │          │          │ 1.8.0             │ 1.9.0, 0.1.10, 8.0.0, 3.3.0, 6.3.0                       │ path-to-regexp: Backtracking regular expressions cause ReDoS │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2024-45296                   │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ pbkdf2                 │ CVE-2025-6545       │ CRITICAL │          │ 3.1.1             │ 3.1.3                                                    │ pbkdf2: pbkdf2 silently returns predictable key material     │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2025-6545                    │
+│                        ├─────────────────────┤          │          │                   │                                                          ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2025-6547       │          │          │                   │                                                          │ pbkdf2: pbkdf2 silently returns static keys                  │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2025-6547                    │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ postcss                │ CVE-2021-23368      │ MEDIUM   │          │ 7.0.21            │ 7.0.36, 8.2.10                                           │ nodejs-postcss: Regular expression denial of service during  │
+│                        │                     │          │          │                   │                                                          │ source map parsing                                           │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2021-23368                   │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2021-23382      │          │          │                   │ 8.2.13, 7.0.36                                           │ nodejs-postcss: ReDoS via getAnnotationURL() and             │
+│                        │                     │          │          │                   │                                                          │ loadAnnotation() in lib/previous-map.js                      │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2021-23382                   │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2023-44270      │          │          │                   │ 8.4.31                                                   │ PostCSS: Improper input validation in PostCSS                │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2023-44270                   │
+│                        │                     │          │          ├───────────────────┤                                                          │                                                              │
+│                        │                     │          │          │ 7.0.39            │                                                          │                                                              │
+│                        │                     │          │          │                   │                                                          │                                                              │
+│                        │                     │          │          ├───────────────────┤                                                          │                                                              │
+│                        │                     │          │          │ 8.4.21            │                                                          │                                                              │
+│                        │                     │          │          │                   │                                                          │                                                              │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ qs                     │ CVE-2022-24999      │ HIGH     │          │ 6.5.2             │ 6.10.3, 6.9.7, 6.8.3, 6.7.3, 6.6.1, 6.5.3, 6.4.1, 6.3.3, │ express: "qs" prototype poisoning causes the hang of the     │
+│                        │                     │          │          │                   │ 6.2.4                                                    │ node process                                                 │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2022-24999                   │
+│                        ├─────────────────────┼──────────┤          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2025-15284      │ MEDIUM   │          │                   │ 6.14.1                                                   │ qs: qs: Denial of Service via improper input validation in   │
+│                        │                     │          │          │                   │                                                          │ array parsing...                                             │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2025-15284                   │
+│                        ├─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2022-24999      │ HIGH     │          │ 6.7.0             │ 6.10.3, 6.9.7, 6.8.3, 6.7.3, 6.6.1, 6.5.3, 6.4.1, 6.3.3, │ express: "qs" prototype poisoning causes the hang of the     │
+│                        │                     │          │          │                   │ 6.2.4                                                    │ node process                                                 │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2022-24999                   │
+│                        ├─────────────────────┼──────────┤          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2025-15284      │ MEDIUM   │          │                   │ 6.14.1                                                   │ qs: qs: Denial of Service via improper input validation in   │
+│                        │                     │          │          │                   │                                                          │ array parsing...                                             │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2025-15284                   │
+│                        ├─────────────────────┼──────────┤          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-2391       │ LOW      │          │                   │ 6.14.2                                                   │ qs: qs's arrayLimit bypass in comma parsing allows denial of │
+│                        │                     │          │          │                   │                                                          │ service                                                      │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2026-2391                    │
+├────────────────────────┼─────────────────────┼──────────┼──────────┼───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ request                │ CVE-2023-28155      │ MEDIUM   │ affected │ 2.88.2            │                                                          │ request: bypass of SSRF mitigations when following a         │
+│                        │                     │          │          │                   │                                                          │ cross-protocol redirect                                      │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2023-28155                   │
+├────────────────────────┼─────────────────────┼──────────┼──────────┼───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ rollup                 │ CVE-2024-47068      │ HIGH     │ fixed    │ 1.32.1            │ 3.29.5, 4.22.4, 2.79.2                                   │ rollup: DOM Clobbering Gadget found in rollup bundled        │
+│                        │                     │          │          │                   │                                                          │ scripts that leads to...                                     │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2024-47068                   │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-27606      │          │          │                   │ 2.80.0, 3.30.0, 4.59.0                                   │ rollup: Rollup: Remote Code Execution via Path Traversal     │
+│                        │                     │          │          │                   │                                                          │ Vulnerability                                                │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2026-27606                   │
+├────────────────────────┼─────────────────────┤          │          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ semver                 │ CVE-2022-25883      │          │          │ 5.7.1             │ 7.5.2, 6.3.1, 5.7.2                                      │ nodejs-semver: Regular expression denial of service          │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2022-25883                   │
+│                        │                     │          │          ├───────────────────┤                                                          │                                                              │
+│                        │                     │          │          │ 6.3.0             │                                                          │                                                              │
+│                        │                     │          │          │                   │                                                          │                                                              │
+│                        │                     │          │          ├───────────────────┤                                                          │                                                              │
+│                        │                     │          │          │ 7.0.0             │                                                          │                                                              │
+│                        │                     │          │          │                   │                                                          │                                                              │
+│                        │                     │          │          ├───────────────────┤                                                          │                                                              │
+│                        │                     │          │          │ 7.3.2             │                                                          │                                                              │
+│                        │                     │          │          │                   │                                                          │                                                              │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ send                   │ CVE-2024-43799      │ LOW      │          │ 0.17.1            │ 0.19.0                                                   │ send: Code Execution Vulnerability in Send Library           │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2024-43799                   │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ serialize-javascript   │ GHSA-5c6j-r48x-rmvq │ HIGH     │          │ 4.0.0             │ 7.0.3                                                    │ Serialize JavaScript is Vulnerable to RCE via RegExp.flags   │
+│                        │                     │          │          │                   │                                                          │ and Date.prototype.toISOString()                             │
+│                        │                     │          │          │                   │                                                          │ https://github.com/advisories/GHSA-5c6j-r48x-rmvq            │
+│                        │                     │          │          ├───────────────────┤                                                          │                                                              │
+│                        │                     │          │          │ 5.0.1             │                                                          │                                                              │
+│                        │                     │          │          │                   │                                                          │                                                              │
+│                        │                     │          │          │                   │                                                          │                                                              │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ serve-static           │ CVE-2024-43800      │ LOW      │          │ 1.14.1            │ 1.16.0, 2.1.0                                            │ serve-static: Improper Sanitization in serve-static          │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2024-43800                   │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ sha.js                 │ CVE-2025-9288       │ CRITICAL │          │ 2.4.11            │ 2.4.12                                                   │ sha.js: Missing type checks leading to hash rewind and       │
+│                        │                     │          │          │                   │                                                          │ passing on crafted...                                        │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2025-9288                    │
+├────────────────────────┼─────────────────────┤          │          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ shell-quote            │ CVE-2021-42740      │          │          │ 1.7.2             │ 1.7.3                                                    │ The shell-quote package before 1.7.3 for Node.js allows      │
+│                        │                     │          │          │                   │                                                          │ command inject ...                                           │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2021-42740                   │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ ssri                   │ CVE-2021-27290      │ HIGH     │          │ 6.0.1             │ 6.0.2, 7.1.1, 8.0.1                                      │ nodejs-ssri: Regular expression DoS (ReDoS) when parsing     │
+│                        │                     │          │          │                   │                                                          │ malicious SRI in strict mode...                              │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2021-27290                   │
+├────────────────────────┼─────────────────────┤          │          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ tar                    │ CVE-2021-32803      │          │          │ 6.1.0             │ 3.2.3, 4.4.15, 5.0.7, 6.1.2                              │ nodejs-tar: Insufficient symlink protection allowing         │
+│                        │                     │          │          │                   │                                                          │ arbitrary file creation and overwrite                        │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2021-32803                   │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2021-32804      │          │          │                   │ 3.2.2, 4.4.14, 5.0.6, 6.1.1                              │ nodejs-tar: Insufficient absolute path sanitization allowing │
+│                        │                     │          │          │                   │                                                          │ arbitrary file creation and overwrite                        │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2021-32804                   │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2021-37701      │          │          │                   │ 4.4.16, 5.0.8, 6.1.7                                     │ nodejs-tar: Insufficient symlink protection due to directory │
+│                        │                     │          │          │                   │                                                          │ cache poisoning using symbolic links...                      │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2021-37701                   │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2021-37712      │          │          │                   │ 4.4.18, 5.0.10, 6.1.9                                    │ nodejs-tar: Insufficient symlink protection due to directory │
+│                        │                     │          │          │                   │                                                          │ cache poisoning using symbolic links...                      │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2021-37712                   │
+│                        ├─────────────────────┤          │          │                   │                                                          ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2021-37713      │          │          │                   │                                                          │ nodejs-tar: Arbitrary File Creation/Overwrite on Windows via │
+│                        │                     │          │          │                   │                                                          │ insufficient relative path sanitization                      │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2021-37713                   │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-23745      │          │          │                   │ 7.5.3                                                    │ node-tar: tar: node-tar: Arbitrary file overwrite and        │
+│                        │                     │          │          │                   │                                                          │ symlink poisoning via unsanitized linkpaths...               │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2026-23745                   │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-23950      │          │          │                   │ 7.5.4                                                    │ node-tar: tar: node-tar: Arbitrary file overwrite via        │
+│                        │                     │          │          │                   │                                                          │ Unicode path collision race condition...                     │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2026-23950                   │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-24842      │          │          │                   │ 7.5.7                                                    │ node-tar: tar: node-tar: Arbitrary file creation via path    │
+│                        │                     │          │          │                   │                                                          │ traversal bypass in hardlink...                              │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2026-24842                   │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-26960      │          │          │                   │ 7.5.8                                                    │ tar: node-tar: node-tar: Arbitrary file read/write via       │
+│                        │                     │          │          │                   │                                                          │ malicious archive hardlink creation                          │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2026-26960                   │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ GHSA-qffp-2rhf-9h96 │          │          │                   │ 7.5.10                                                   │ tar has Hardlink Path Traversal via Drive-Relative Linkpath  │
+│                        │                     │          │          │                   │                                                          │ https://github.com/advisories/GHSA-qffp-2rhf-9h96            │
+│                        ├─────────────────────┼──────────┤          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2024-28863      │ MEDIUM   │          │                   │ 6.2.1                                                    │ node-tar: denial of service while parsing a tar file due to  │
+│                        │                     │          │          │                   │                                                          │ lack...                                                      │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2024-28863                   │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ terser                 │ CVE-2022-25858      │ HIGH     │          │ 4.8.0             │ 4.8.1, 5.14.2                                            │ terser: insecure use of regular expressions leads to ReDoS   │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2022-25858                   │
+│                        │                     │          │          ├───────────────────┤                                                          │                                                              │
+│                        │                     │          │          │ 5.6.0             │                                                          │                                                              │
+│                        │                     │          │          │                   │                                                          │                                                              │
+├────────────────────────┼─────────────────────┤          │          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ tmpl                   │ CVE-2021-3777       │          │          │ 1.0.4             │ 1.0.5                                                    │ tmpl vulnerable to Inefficient Regular Expression Complexity │
+│                        │                     │          │          │                   │                                                          │ which may lead to resource...                                │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2021-3777                    │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ tough-cookie           │ CVE-2023-26136      │ MEDIUM   │          │ 2.5.0             │ 4.1.3                                                    │ tough-cookie: prototype pollution in cookie memstore         │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2023-26136                   │
+│                        │                     │          │          ├───────────────────┤                                                          │                                                              │
+│                        │                     │          │          │ 4.0.0             │                                                          │                                                              │
+│                        │                     │          │          │                   │                                                          │                                                              │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ url-parse              │ CVE-2022-0686       │ CRITICAL │          │ 1.5.1             │ 1.5.8                                                    │ npm-url-parse: Authorization bypass through user-controlled  │
+│                        │                     │          │          │                   │                                                          │ key                                                          │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2022-0686                    │
+│                        ├─────────────────────┼──────────┤          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2021-3664       │ MEDIUM   │          │                   │ 1.5.2                                                    │ nodejs-url-parse: URL Redirection to Untrusted Site          │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2021-3664                    │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2022-0512       │          │          │                   │ 1.5.6                                                    │ nodejs-url-parse: authorization bypass through               │
+│                        │                     │          │          │                   │                                                          │ user-controlled key                                          │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2022-0512                    │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2022-0639       │          │          │                   │ 1.5.7                                                    │ npm-url-parse: Authorization Bypass Through User-Controlled  │
+│                        │                     │          │          │                   │                                                          │ Key                                                          │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2022-0639                    │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2022-0691       │          │          │                   │ 1.5.9                                                    │ npm-url-parse: authorization bypass through user-controlled  │
+│                        │                     │          │          │                   │                                                          │ key                                                          │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2022-0691                    │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ webpack-dev-middleware │ CVE-2024-29180      │ HIGH     │          │ 3.7.3             │ 7.1.0, 6.1.2, 5.3.4                                      │ webpack-dev-middleware: lack of URL validation may lead to   │
+│                        │                     │          │          │                   │                                                          │ file leak                                                    │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2024-29180                   │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ webpack-dev-server     │ CVE-2025-30359      │ MEDIUM   │          │ 3.11.1            │ 5.2.1                                                    │ webpack-dev-server: webpack-dev-server information exposure  │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2025-30359                   │
+│                        ├─────────────────────┤          │          │                   │                                                          ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2025-30360      │          │          │                   │                                                          │ webpack-dev-server: webpack-dev-server information exposure  │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2025-30360                   │
+├────────────────────────┼─────────────────────┤          │          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ word-wrap              │ CVE-2023-26115      │          │          │ 1.2.3             │ 1.2.4                                                    │ word-wrap: ReDoS                                             │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2023-26115                   │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ ws                     │ CVE-2024-37890      │ HIGH     │          │ 6.2.1             │ 5.2.4, 6.2.3, 7.5.10, 8.17.1                             │ nodejs-ws: denial of service when handling a request with    │
+│                        │                     │          │          │                   │                                                          │ many HTTP headers...                                         │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2024-37890                   │
+│                        ├─────────────────────┼──────────┤          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2021-32640      │ MEDIUM   │          │                   │ 7.4.6, 6.2.2, 5.2.3                                      │ nodejs-ws: Specially crafted value of the                    │
+│                        │                     │          │          │                   │                                                          │ `Sec-Websocket-Protocol` header can be used to...            │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2021-32640                   │
+│                        ├─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2024-37890      │ HIGH     │          │ 7.4.4             │ 5.2.4, 6.2.3, 7.5.10, 8.17.1                             │ nodejs-ws: denial of service when handling a request with    │
+│                        │                     │          │          │                   │                                                          │ many HTTP headers...                                         │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2024-37890                   │
+│                        ├─────────────────────┼──────────┤          │                   ├──────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2021-32640      │ MEDIUM   │          │                   │ 7.4.6, 6.2.2, 5.2.3                                      │ nodejs-ws: Specially crafted value of the                    │
+│                        │                     │          │          │                   │                                                          │ `Sec-Websocket-Protocol` header can be used to...            │
+│                        │                     │          │          │                   │                                                          │ https://avd.aquasec.com/nvd/cve-2021-32640                   │
+└────────────────────────┴─────────────────────┴──────────┴──────────┴───────────────────┴──────────────────────────────────────────────────────────┴──────────────────────────────────────────────────────────────┘
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Docker Build)
+[Pipeline] sh
++ docker build -t kalyantwt/book-my-show:latest ./bookmyshow-app
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 368B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:18
+#2 DONE 1.2s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/6] FROM docker.io/library/node:18@sha256:c6ae79e38498325db67193d391e6ec1d224d96c693a8a4d943498556716d3783
+#4 resolve docker.io/library/node:18@sha256:c6ae79e38498325db67193d391e6ec1d224d96c693a8a4d943498556716d3783 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 39.75MB 5.1s
+#5 transferring context: 126.82MB 10.2s
+#5 transferring context: 201.71MB 15.3s
+#5 transferring context: 385.66MB 20.5s
+#5 transferring context: 416.49MB 22.0s done
+#5 DONE 22.3s
+
+#6 [2/6] WORKDIR /app
+#6 CACHED
+
+#7 [3/6] COPY package.json package-lock.json ./
+#7 CACHED
+
+#8 [4/6] RUN npm install postcss@8.4.21 postcss-safe-parser@6.0.0 --legacy-peer-deps  && npm install  && npm install -g serve
+#8 60.52 
+#8 60.52 added 2319 packages, and audited 2320 packages in 60s
+#8 60.52 
+#8 60.52 5 packages are looking for funding
+#8 60.52   run `npm fund` for details
+#8 60.76 
+#8 60.76 192 vulnerabilities (7 low, 111 moderate, 55 high, 19 critical)
+#8 60.76 
+#8 60.76 To address issues that do not require attention, run:
+#8 60.76   npm audit fix
+#8 60.76 
+#8 60.76 To address all issues (including breaking changes), run:
+#8 60.76   npm audit fix --force
+#8 60.76 
+#8 60.76 Run `npm audit` for details.
+#8 60.76 npm notice
+#8 60.76 npm notice New major version of npm available! 10.8.2 -> 11.11.0
+#8 60.76 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.11.0
+#8 60.76 npm notice To update run: npm install -g npm@11.11.0
+#8 60.76 npm notice
+#8 69.66 
+#8 69.66 up to date, audited 2320 packages in 9s
+#8 69.66 
+#8 69.66 5 packages are looking for funding
+#8 69.66   run `npm fund` for details
+#8 69.89 
+#8 69.89 190 vulnerabilities (7 low, 111 moderate, 53 high, 19 critical)
+#8 69.89 
+#8 69.89 To address issues that do not require attention, run:
+#8 69.89   npm audit fix
+#8 69.89 
+#8 69.89 To address all issues (including breaking changes), run:
+#8 69.89   npm audit fix --force
+#8 69.89 
+#8 69.89 Run `npm audit` for details.
+#8 77.04 
+#8 77.04 added 85 packages in 7s
+#8 77.04 
+#8 77.04 26 packages are looking for funding
+#8 77.04   run `npm fund` for details
+#8 DONE 78.2s
+
+#9 [5/6] COPY . .
+#9 DONE 95.0s
+
+#10 [6/6] RUN npm run build
+#10 1.073 
+#10 1.073 > bookmyshow-app@0.1.0 build
+#10 1.073 > react-scripts build
+#10 1.073 
+#10 3.171 Creating an optimized production build...
+#10 3.819 Browserslist: caniuse-lite is outdated. Please run:
+#10 3.819 npx browserslist@latest --update-db
+#10 3.819 
+#10 3.819 Why you should do it regularly:
+#10 3.819 https://github.com/browserslist/browserslist#browsers-data-updating
+#10 80.69 Compiled with warnings.
+#10 80.69 
+#10 80.69 src/Components/BookTickets/Calendar.jsx
+#10 80.69   Line 3:23:  'useSelector' is defined but never used  no-unused-vars
+#10 80.69 
+#10 80.69 src/Components/BookTickets/CinemasBody.jsx
+#10 80.69   Line 1:17:   'useEffect' is defined but never used      no-unused-vars
+#10 80.69   Line 16:11:  'data' is assigned a value but never used  no-unused-vars
+#10 80.69 
+#10 80.69 src/Components/BookTickets/Header.jsx
+#10 80.69   Line 20:8:  React Hook useEffect has a missing dependency: 'dispatch'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+#10 80.69 
+#10 80.69 src/Components/PaymentsPage/SecondSection.jsx
+#10 80.69   Line 46:110:  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+#10 80.69   Line 53:149:  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+#10 80.69 
+#10 80.69 src/Components/Seating.jsx
+#10 80.69   Line 1:17:   'useEffect' is defined but never used                                                                                                                                                                                                                                                              no-unused-vars
+#10 80.69   Line 24:10:  'seatActive' is assigned a value but never used                                                                                                                                                                                                                                                    no-unused-vars
+#10 80.69   Line 57:6:   React Hook React.useEffect has missing dependencies: 'ticketPrice1' and 'ticketPrice2'. Either include them or remove the dependency array. If 'setPrice' needs the current value of 'ticketPrice1', you can also switch to useReducer instead of useState and read 'ticketPrice1' in the reducer  react-hooks/exhaustive-deps
+#10 80.69 
+#10 80.69 src/Components/SummeryPage/Food.jsx
+#10 80.69   Line 26:8:   React Hook React.useEffect has missing dependencies: 'dispatch', 'foods', and 'handleFilter'. Either include them or remove the dependency array                                                                                                                                                                                                                  react-hooks/exhaustive-deps
+#10 80.69   Line 69:8:   React Hook React.useEffect has a missing dependency: 'dispatch'. Either include it or remove the dependency array                                                                                                                                                                                                                                                 react-hooks/exhaustive-deps
+#10 80.69   Line 73:8:   React Hook React.useEffect has a missing dependency: 'dispatch'. Either include it or remove the dependency array                                                                                                                                                                                                                                                 react-hooks/exhaustive-deps
+#10 80.69   Line 81:29:  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+#10 80.69 
+#10 80.69 src/Pages/BookTicketsPage.jsx
+#10 80.69   Line 17:11:  'movie_name' is assigned a value but never used                                                                         no-unused-vars
+#10 80.69   Line 31:8:   React Hook useEffect has missing dependencies: 'dispatch' and 'id'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+#10 80.69 
+#10 80.69 src/Pages/HomePage.jsx
+#10 80.69   Line 24:8:  React Hook useEffect has a missing dependency: 'dispatch'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+#10 80.69 
+#10 80.69 src/Pages/LoginPage.jsx
+#10 80.69   Line 26:7:   'DialogTitle' is assigned a value but never used                                                                                                                                                                                                                                                                                                                  no-unused-vars
+#10 80.69   Line 82:31:  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+#10 80.69   Line 82:90:  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+#10 80.69 
+#10 80.69 src/Pages/PaymentsPage.jsx
+#10 80.69   Line 5:8:   'ListItemText' is defined but never used           no-unused-vars
+#10 80.69   Line 6:8:   'ListItem' is defined but never used               no-unused-vars
+#10 80.69   Line 7:8:   'List' is defined but never used                   no-unused-vars
+#10 80.69   Line 8:8:   'Divider' is defined but never used                no-unused-vars
+#10 80.69   Line 11:8:  'IconButton' is defined but never used             no-unused-vars
+#10 80.69   Line 14:8:  'ClearIcon' is defined but never used              no-unused-vars
+#10 80.69   Line 15:8:  'ChevronLeftIcon' is defined but never used        no-unused-vars
+#10 80.69   Line 17:8:  'Food' is defined but never used                   no-unused-vars
+#10 80.69   Line 66:9:  'city' is assigned a value but never used          no-unused-vars
+#10 80.69   Line 74:9:  'handleChange' is assigned a value but never used  no-unused-vars
+#10 80.69 
+#10 80.69 src/Pages/SeeAll.jsx
+#10 80.69   Line 17:12:  'state' is assigned a value but never used                                                                                                                                                         no-unused-vars
+#10 80.69   Line 17:19:  'setState' is assigned a value but never used                                                                                                                                                      no-unused-vars
+#10 80.69   Line 22:8:   React Hook React.useEffect has a missing dependency: 'dispatch'. Either include it or remove the dependency array                                                                                  react-hooks/exhaustive-deps
+#10 80.69   Line 57:8:   React Hook React.useEffect has missing dependencies: 'filterFormate.length', 'filterGenre.length', 'filterLanguage.length', and 'movies_data'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+#10 80.69   Line 98:13:  'lan' is assigned a value but never used                                                                                                                                                           no-unused-vars
+#10 80.69 
+#10 80.69 src/Pages/SummeryPage.jsx
+#10 80.69   Line 5:8:      'ListItemText' is defined but never used                                                                                                                                                                                                                                                                                                                          no-unused-vars
+#10 80.69   Line 6:8:      'ListItem' is defined but never used                                                                                                                                                                                                                                                                                                                              no-unused-vars
+#10 80.69   Line 7:8:      'List' is defined but never used                                                                                                                                                                                                                                                                                                                                  no-unused-vars
+#10 80.69   Line 8:8:      'Divider' is defined but never used                                                                                                                                                                                                                                                                                                                               no-unused-vars
+#10 80.69   Line 13:8:     'CloseIcon' is defined but never used                                                                                                                                                                                                                                                                                                                             no-unused-vars
+#10 80.69   Line 46:10:    'open' is assigned a value but never used                                                                                                                                                                                                                                                                                                                         no-unused-vars
+#10 80.69   Line 61:9:     'handleClickOpen' is assigned a value but never used                                                                                                                                                                                                                                                                                                              no-unused-vars
+#10 80.69   Line 65:9:     'handleClose' is assigned a value but never used                                                                                                                                                                                                                                                                                                                  no-unused-vars
+#10 80.69   Line 139:106:  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+#10 80.69   Line 149:145:  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+#10 80.69 
+#10 80.69 src/Pages/moviePage/MoviePage.jsx
+#10 80.69   Line 56:6:   React Hook React.useEffect has missing dependencies: 'dispatch' and 'id'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+#10 80.69   Line 108:6:  React Hook React.useEffect has a missing dependency: 'dispatch'. Either include it or remove the dependency array             react-hooks/exhaustive-deps
+#10 80.69 
+#10 80.69 src/Redux/app/reducer.js
+#10 80.69   Line 1:8:  'React' is defined but never used  no-unused-vars
+#10 80.69 
+#10 80.69 src/Redux/cinemas/cinemasReducer.js
+#10 80.69   Line 1:8:  'React' is defined but never used  no-unused-vars
+#10 80.69 
+#10 80.69 src/Routes/Navbar.jsx
+#10 80.69   Line 1:17:   'useState' is defined but never used                                                                               no-unused-vars
+#10 80.69   Line 5:8:    'Button' is defined but never used                                                                                 no-unused-vars
+#10 80.69   Line 7:8:    'DialogActions' is defined but never used                                                                          no-unused-vars
+#10 80.69   Line 10:8:   'DialogTitle' is defined but never used                                                                            no-unused-vars
+#10 80.69   Line 18:8:   'clsx' is defined but never used                                                                                   no-unused-vars
+#10 80.69   Line 19:10:  'useReducer' is defined but never used                                                                             no-unused-vars
+#10 80.69   Line 79:10:  'query' is assigned a value but never used                                                                         no-unused-vars
+#10 80.69   Line 80:10:  'city' is assigned a value but never used                                                                          no-unused-vars
+#10 80.69   Line 84:9:   'classes' is assigned a value but never used                                                                       no-unused-vars
+#10 80.69   Line 105:6:  React Hook React.useEffect has a missing dependency: 'dispatch'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+#10 80.69   Line 133:6:  React Hook React.useEffect has a missing dependency: 'dispatch'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+#10 80.69 
+#10 80.69 Search for the keywords to learn more about each warning.
+#10 80.69 To ignore, add // eslint-disable-next-line to the line before.
+#10 80.69 
+#10 80.69 File sizes after gzip:
+#10 80.69 
+#10 80.75   205.73 KB  build/static/js/2.cea2f797.chunk.js
+#10 80.75   65.79 KB   build/static/css/2.c2bd598b.chunk.css
+#10 80.75   32.07 KB   build/static/js/main.32a12bc8.chunk.js
+#10 80.75   5.94 KB    build/static/css/main.7ac4ad3c.chunk.css
+#10 80.75   1.59 KB    build/static/js/3.a8a4b6da.chunk.js
+#10 80.75   1.17 KB    build/static/js/runtime-main.bf7aaa3c.js
+#10 80.75 
+#10 80.75 The project was built assuming it is hosted at ./.
+#10 80.75 You can control this with the homepage field in your package.json.
+#10 80.75 
+#10 80.75 The build folder is ready to be deployed.
+#10 80.75 
+#10 80.75 Find out more about deployment here:
+#10 80.75 
+#10 80.75   https://cra.link/deployment
+#10 80.75 
+#10 DONE 81.1s
+
+#11 exporting to image
+#11 exporting layers
+#11 exporting layers 110.1s done
+#11 exporting manifest sha256:beed78030abd6030f780b695cbe6e0ef16d4433cf2d8702d62ebc0eb6eb9d1a4 0.0s done
+#11 exporting config sha256:c198ca90f7f4d72c32b4ae82d1b4f4350279709d81ec71e8b2d682be54efc91b 0.0s done
+#11 exporting attestation manifest sha256:08118eac44d8dfa35d6ef38fd741465816c9b53e80c9276ab2a55caa52420d7a 0.0s done
+#11 exporting manifest list sha256:77f324ff4f3c7923af353753adec2b5d01e9022ba95acc3277b41881e0368556
+#11 exporting manifest list sha256:77f324ff4f3c7923af353753adec2b5d01e9022ba95acc3277b41881e0368556 0.0s done
+#11 naming to docker.io/kalyantwt/book-my-show:latest done
+#11 unpacking to docker.io/kalyantwt/book-my-show:latest
+#11 unpacking to docker.io/kalyantwt/book-my-show:latest 34.9s done
+#11 DONE 145.3s
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Docker Push)
+[Pipeline] withDockerRegistry
+$ docker login -u kalyantwt -p ******** https://index.docker.io/v1/
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+
+WARNING! Your credentials are stored unencrypted in '/var/lib/jenkins/workspace/BookMyShow@tmp/a07e6241-8d8c-404b-8296-2da021ae86a0/config.json'.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/go/credential-store/
+
+Login Succeeded
+[Pipeline] {
+[Pipeline] sh
++ docker push kalyantwt/book-my-show:latest
+The push refers to repository [docker.io/kalyantwt/book-my-show]
+3697be50c98b: Waiting
+e264396b3be2: Waiting
+37927ed901b1: Waiting
+461077a72fb7: Waiting
+79b2f47ad444: Waiting
+7993e05f5fa1: Waiting
+e23f099911d6: Waiting
+57d5d8de46c4: Waiting
+3e6b9d1a9511: Waiting
+cd4e9c55de0e: Waiting
+dc035a39cdf3: Waiting
+cda7f44f2bdd: Waiting
+98339dd73f6c: Waiting
+c6b30c3f1696: Waiting
+cda7f44f2bdd: Waiting
+98339dd73f6c: Waiting
+c6b30c3f1696: Waiting
+3697be50c98b: Waiting
+e264396b3be2: Waiting
+37927ed901b1: Waiting
+461077a72fb7: Waiting
+79b2f47ad444: Waiting
+7993e05f5fa1: Waiting
+e23f099911d6: Waiting
+57d5d8de46c4: Waiting
+3e6b9d1a9511: Waiting
+cd4e9c55de0e: Waiting
+dc035a39cdf3: Waiting
+37927ed901b1: Waiting
+461077a72fb7: Waiting
+79b2f47ad444: Waiting
+7993e05f5fa1: Waiting
+e23f099911d6: Waiting
+57d5d8de46c4: Waiting
+3e6b9d1a9511: Waiting
+cd4e9c55de0e: Waiting
+dc035a39cdf3: Waiting
+cda7f44f2bdd: Waiting
+98339dd73f6c: Waiting
+c6b30c3f1696: Waiting
+3697be50c98b: Waiting
+e264396b3be2: Waiting
+e23f099911d6: Waiting
+57d5d8de46c4: Waiting
+3e6b9d1a9511: Waiting
+cd4e9c55de0e: Waiting
+dc035a39cdf3: Waiting
+cda7f44f2bdd: Waiting
+98339dd73f6c: Waiting
+c6b30c3f1696: Waiting
+3697be50c98b: Waiting
+e264396b3be2: Waiting
+37927ed901b1: Waiting
+461077a72fb7: Waiting
+79b2f47ad444: Waiting
+7993e05f5fa1: Waiting
+dc035a39cdf3: Waiting
+cda7f44f2bdd: Waiting
+98339dd73f6c: Waiting
+c6b30c3f1696: Waiting
+3697be50c98b: Waiting
+e264396b3be2: Waiting
+37927ed901b1: Waiting
+461077a72fb7: Waiting
+79b2f47ad444: Waiting
+7993e05f5fa1: Waiting
+e23f099911d6: Waiting
+57d5d8de46c4: Waiting
+3e6b9d1a9511: Waiting
+cd4e9c55de0e: Waiting
+57d5d8de46c4: Waiting
+3e6b9d1a9511: Waiting
+cd4e9c55de0e: Waiting
+dc035a39cdf3: Waiting
+cda7f44f2bdd: Waiting
+98339dd73f6c: Waiting
+c6b30c3f1696: Waiting
+3697be50c98b: Waiting
+e264396b3be2: Waiting
+37927ed901b1: Waiting
+461077a72fb7: Waiting
+79b2f47ad444: Waiting
+7993e05f5fa1: Waiting
+e23f099911d6: Waiting
+cda7f44f2bdd: Waiting
+98339dd73f6c: Waiting
+c6b30c3f1696: Waiting
+3697be50c98b: Waiting
+e264396b3be2: Waiting
+37927ed901b1: Waiting
+461077a72fb7: Waiting
+79b2f47ad444: Waiting
+7993e05f5fa1: Waiting
+e23f099911d6: Waiting
+57d5d8de46c4: Waiting
+3e6b9d1a9511: Waiting
+cd4e9c55de0e: Waiting
+dc035a39cdf3: Waiting
+57d5d8de46c4: Waiting
+3e6b9d1a9511: Waiting
+cd4e9c55de0e: Waiting
+dc035a39cdf3: Waiting
+cda7f44f2bdd: Waiting
+98339dd73f6c: Waiting
+c6b30c3f1696: Waiting
+3697be50c98b: Waiting
+e264396b3be2: Waiting
+37927ed901b1: Waiting
+461077a72fb7: Waiting
+79b2f47ad444: Waiting
+7993e05f5fa1: Waiting
+e23f099911d6: Waiting
+e264396b3be2: Waiting
+37927ed901b1: Waiting
+461077a72fb7: Waiting
+79b2f47ad444: Waiting
+7993e05f5fa1: Waiting
+e23f099911d6: Waiting
+57d5d8de46c4: Waiting
+3e6b9d1a9511: Waiting
+cd4e9c55de0e: Waiting
+dc035a39cdf3: Waiting
+cda7f44f2bdd: Waiting
+98339dd73f6c: Waiting
+c6b30c3f1696: Waiting
+3697be50c98b: Waiting
+c6b30c3f1696: Waiting
+3697be50c98b: Waiting
+e264396b3be2: Waiting
+37927ed901b1: Waiting
+461077a72fb7: Waiting
+79b2f47ad444: Waiting
+7993e05f5fa1: Waiting
+e23f099911d6: Waiting
+57d5d8de46c4: Waiting
+3e6b9d1a9511: Waiting
+cd4e9c55de0e: Waiting
+dc035a39cdf3: Waiting
+cda7f44f2bdd: Waiting
+98339dd73f6c: Waiting
+c6b30c3f1696: Waiting
+3697be50c98b: Waiting
+e264396b3be2: Waiting
+37927ed901b1: Waiting
+461077a72fb7: Waiting
+79b2f47ad444: Waiting
+7993e05f5fa1: Waiting
+e23f099911d6: Waiting
+57d5d8de46c4: Waiting
+3e6b9d1a9511: Waiting
+cd4e9c55de0e: Waiting
+dc035a39cdf3: Waiting
+cda7f44f2bdd: Waiting
+98339dd73f6c: Waiting
+3e6b9d1a9511: Waiting
+cd4e9c55de0e: Waiting
+dc035a39cdf3: Waiting
+cda7f44f2bdd: Waiting
+98339dd73f6c: Waiting
+c6b30c3f1696: Waiting
+3697be50c98b: Waiting
+e264396b3be2: Waiting
+37927ed901b1: Waiting
+461077a72fb7: Waiting
+79b2f47ad444: Waiting
+7993e05f5fa1: Waiting
+e23f099911d6: Waiting
+57d5d8de46c4: Waiting
+57d5d8de46c4: Waiting
+3e6b9d1a9511: Waiting
+cd4e9c55de0e: Waiting
+dc035a39cdf3: Waiting
+cda7f44f2bdd: Waiting
+98339dd73f6c: Waiting
+c6b30c3f1696: Waiting
+3697be50c98b: Waiting
+e264396b3be2: Waiting
+37927ed901b1: Waiting
+461077a72fb7: Waiting
+79b2f47ad444: Waiting
+7993e05f5fa1: Waiting
+e23f099911d6: Waiting
+79b2f47ad444: Waiting
+7993e05f5fa1: Waiting
+e23f099911d6: Layer already exists
+57d5d8de46c4: Waiting
+3e6b9d1a9511: Layer already exists
+cd4e9c55de0e: Waiting
+dc035a39cdf3: Waiting
+cda7f44f2bdd: Waiting
+98339dd73f6c: Waiting
+c6b30c3f1696: Waiting
+3697be50c98b: Waiting
+e264396b3be2: Waiting
+37927ed901b1: Waiting
+461077a72fb7: Waiting
+cd4e9c55de0e: Waiting
+dc035a39cdf3: Waiting
+cda7f44f2bdd: Waiting
+98339dd73f6c: Waiting
+c6b30c3f1696: Waiting
+3697be50c98b: Waiting
+e264396b3be2: Waiting
+37927ed901b1: Waiting
+461077a72fb7: Waiting
+79b2f47ad444: Waiting
+7993e05f5fa1: Waiting
+57d5d8de46c4: Waiting
+3697be50c98b: Layer already exists
+e264396b3be2: Waiting
+37927ed901b1: Layer already exists
+461077a72fb7: Layer already exists
+79b2f47ad444: Layer already exists
+7993e05f5fa1: Layer already exists
+57d5d8de46c4: Waiting
+cd4e9c55de0e: Layer already exists
+dc035a39cdf3: Waiting
+cda7f44f2bdd: Layer already exists
+98339dd73f6c: Waiting
+c6b30c3f1696: Layer already exists
+dc035a39cdf3: Waiting
+98339dd73f6c: Waiting
+e264396b3be2: Waiting
+e264396b3be2: Waiting
+dc035a39cdf3: Waiting
+98339dd73f6c: Waiting
+57d5d8de46c4: Pushed
+e264396b3be2: Pushed
+98339dd73f6c: Pushed
+dc035a39cdf3: Pushed
+latest: digest: sha256:77f324ff4f3c7923af353753adec2b5d01e9022ba95acc3277b41881e0368556 size: 856
+[Pipeline] }
+[Pipeline] // withDockerRegistry
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy to Docker Container)
+[Pipeline] sh
++ docker stop bms-container
+bms-container
++ docker rm bms-container
+bms-container
++ docker run -d -p 3000:3000 --name bms-container kalyantwt/book-my-show:latest
+5fe9c8929be6ef9355bbe553f857706a2d9fb8ac61f33c1a2d1ec7f8eaa392e4
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] emailext
+Sending email to: shoton76mm@gmail.com
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
